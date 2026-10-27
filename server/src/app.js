@@ -15,6 +15,16 @@ app.use(cors({
 app.use(express.json());
 
 // Routes
+app.get('/', (req, res) => {
+  res.json({
+    service: 'QuickKart API Server',
+    status: 'online',
+    healthCheck: '/api/health',
+    frontendUrl: config.clientOrigin,
+    message: 'This is the backend API server. For the customer storefront, open http://localhost:5173',
+  });
+});
+
 app.use('/api', healthRoutes);
 
 // 404 Handler
